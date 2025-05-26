@@ -114,6 +114,9 @@ const ContactSection: React.FC = () => {
           </div>
         </div>
       </motion.div>
+      <div className="text-center text-white/50 text-sm mt-6 mb-4">
+         © 2025 All rights reserved
+      </div>
     </div>
   );
 };

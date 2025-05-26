@@ -18,7 +18,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
 
   return (
     <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 px-4 py-4 md:py-6"
+      className="fixed top-[-10px] left-0 right-0 z-50 px-4 py-4 md:py-6"
+
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
