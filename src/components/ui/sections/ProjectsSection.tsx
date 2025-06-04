@@ -8,18 +8,29 @@ interface Project {
   tags: string[];
   links: {
     github?: string;
+    liveDemo?: string;
   };
 }
 
 const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
+      title: "SmartMatch Resumes",
+      description:
+        "An intelligent resume screening tool that semantically matches resumes with job descriptions using NLP and deep learning. Features resume ranking, skill extraction, and personalized feedback.",
+      tags: ["Python", "NLP", "Streamlit", "Deep Learning", "AI"],
+      links: {
+        github: "https://github.com/jkplearner/smartMatchResumes", 
+        liveDemo: "https://smartmatchresumes-live-demo.streamlit.app/", 
+      },
+    },
+    {
       title: "Nutrimap FoodAnalyzer",
       description:
         "A web application that analyzes food items and provides nutritional information. Built using JavaScript and CSS.",
       tags: ["JavaScript", "CSS", "Nutrition", "Web App"],
       links: {
-        github: "https://github.com/jkplearner/Nutrimap-FoodAnalyzer",
+        github: "https://github.com/jkplearner/Nutrimap-FoodAnalyzer", 
       },
     },
     {
@@ -28,7 +39,7 @@ const ProjectsSection: React.FC = () => {
         "A chatbot application developed using the MERN stack and integrated with the Gemini API. Features include speech-to-text, text-to-speech, image sending, and chat history management.",
       tags: ["MERN", "Gemini API", "Chatbot", "AI"],
       links: {
-        github: "https://github.com/jkplearner/Chatbot-using-gemini",
+        github: "https://github.com/jkplearner/Chatbot-using-gemini", 
       },
     },
     {
@@ -37,7 +48,7 @@ const ProjectsSection: React.FC = () => {
         "A simple mobile application that utilizes NASA's API to display the latest space news. Developed in Java.",
       tags: ["Java", "NASA API", "Mobile App", "Space News"],
       links: {
-        github: "https://github.com/jkplearner/Space-News",
+        github: "https://github.com/jkplearner/Space-News", 
       },
     },
   ];
@@ -113,9 +124,24 @@ const ProjectsSection: React.FC = () => {
                       className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-full text-white/80 text-sm transition-colors"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <GithubIcon size={14} />
                       <span>Code</span>
+                    </motion.a>
+                  )}
+
+                  {project.links.liveDemo && (
+                    <motion.a
+                      href={project.links.liveDemo}
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-full text-white/80 text-sm transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Live Demo</span>
                     </motion.a>
                   )}
                 </div>
