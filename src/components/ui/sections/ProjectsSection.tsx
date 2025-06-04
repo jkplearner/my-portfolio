@@ -42,15 +42,15 @@ const ProjectsSection: React.FC = () => {
         github: "https://github.com/jkplearner/Chatbot-using-gemini", 
       },
     },
-    {
-      title: "Space News",
-      description:
-        "A simple mobile application that utilizes NASA's API to display the latest space news. Developed in Java.",
-      tags: ["Java", "NASA API", "Mobile App", "Space News"],
-      links: {
-        github: "https://github.com/jkplearner/Space-News", 
-      },
-    },
+    // {
+    //   title: "Space News",
+    //   description:
+    //     "A simple mobile application that utilizes NASA's API to display the latest space news. Developed in Java.",
+    //   tags: ["Java", "NASA API", "Mobile App", "Space News"],
+    //   links: {
+    //     github: "https://github.com/jkplearner/Space-News", 
+    //   },
+    // },
   ];
 
   const containerVariants = {
