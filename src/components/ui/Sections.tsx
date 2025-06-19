@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import HomeSection from './sections/HomeSection';
 import AboutSection from './sections/AboutSection';
 import SkillsSection from './sections/SkillsSection';
@@ -20,7 +19,7 @@ const Sections: React.FC = () => {
       </section>
       
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen flex items-center">
+      <section id="skills" className="min-h-screen flex items-center" style={{marginBottom:50,}}>
         <SkillsSection />
       </section>
       
@@ -30,7 +29,7 @@ const Sections: React.FC = () => {
       </section>
       
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center">
+      <section id="contact" className="min-h-screen flex items-center" style={{marginTop:50,}}>
         <ContactSection />
       </section>
     </div>

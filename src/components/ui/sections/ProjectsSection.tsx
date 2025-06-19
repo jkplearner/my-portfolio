@@ -42,15 +42,15 @@ const ProjectsSection: React.FC = () => {
         github: "https://github.com/jkplearner/Chatbot-using-gemini", 
       },
     },
-    // {
-    //   title: "Space News",
-    //   description:
-    //     "A simple mobile application that utilizes NASA's API to display the latest space news. Developed in Java.",
-    //   tags: ["Java", "NASA API", "Mobile App", "Space News"],
-    //   links: {
-    //     github: "https://github.com/jkplearner/Space-News", 
-    //   },
-    // },
+    {
+      title: "Dairy Management App",
+      description:
+        "A web-based applicattion designed to streamline dairy products operations by managing records of milk products, sales, and inventory with automated data handling and real-time analytics.",
+      tags: ["Salesforce", "Apex", "Lightning Web Components (LWC)", "Salesfroce Automation"],
+      links: {
+        github: "https://github.com/jkplearner/Dairy-Management", 
+      },
+    },
   ];
 
   const containerVariants = {
