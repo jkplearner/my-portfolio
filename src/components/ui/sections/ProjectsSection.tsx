@@ -2,6 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { GithubIcon } from 'lucide-react';
 
+interface Contributor {
+  name: string;
+  role: string;
+  github: string;
+}
+
 interface Project {
   title: string;
   description: string;
@@ -10,6 +16,7 @@ interface Project {
     github?: string;
     liveDemo?: string;
   };
+  contributors?: Contributor[]; // Optional field
 }
 
 const ProjectsSection: React.FC = () => {
@@ -45,11 +52,33 @@ const ProjectsSection: React.FC = () => {
     {
       title: "Dairy Management App",
       description:
-        "A web-based applicattion designed to streamline dairy products operations by managing records of milk products, sales, and inventory with automated data handling and real-time analytics.",
-      tags: ["Salesforce", "Apex", "Lightning Web Components (LWC)", "Salesfroce Automation"],
+        "A web-based application designed to streamline dairy products operations by managing records of milk products, sales, and inventory with automated data handling and real-time analytics.",
+      tags: ["Salesforce", "Apex", "Lightning Web Components (LWC)", "Salesforce Automation"],
       links: {
         github: "https://github.com/jkplearner/Dairy-Management", 
       },
+    },
+    {
+      title: "Quizzy",
+      description:
+        "An AI-powered quiz application that dynamically generates quizzes based on user-selected topics and difficulty levels using Gemini API. Features include real-time scoring, MCQ and FIB support, question navigation, and downloadable results.",
+      tags: ["React", "AI", "Gemini API", "JavaScript", "Vercel"],
+      links: {
+        github: "https://github.com/jkplearner/Quizzy", 
+        liveDemo: "https://quizzy-project.vercel.app/", 
+      },
+      contributors: [
+        {
+          name: "Jaya Krishna Pavan Mummaneni",
+          role: "Backend & AI Logic",
+          github: "https://github.com/jkplearner", 
+        },
+        {
+          name: "Srineela Reddy M",
+          role: "Frontend & UI Design",
+          github: "https://github.com/srinime1806", 
+        },
+      ],
     },
   ];
 
@@ -116,6 +145,22 @@ const ProjectsSection: React.FC = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Contributors Section */}
+                {project.contributors && project.contributors.length > 0 && (
+                  <div className="mb-4">
+                    <h4 className="text-sm font-medium text-white/60 mb-2">Contributors:</h4>
+                    <ul className="space-y-1">
+                      {project.contributors.map((contributor, idx) => (
+                        <li key={idx} className="text-xs text-white/60" style={{ fontWeight: 'bold' }}>
+                          <a href={contributor.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                            {contributor.name} - <span className="italic">{contributor.role}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="flex gap-3">
                   {project.links.github && (
