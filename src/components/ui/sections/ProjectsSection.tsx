@@ -80,6 +80,29 @@ const ProjectsSection: React.FC = () => {
         },
       ],
     },
+    {
+  title: "StegaNest",
+  description:
+    "A secure image steganography app built with the MERN stack that allows users to hide encrypted messages inside images and retrieve them using password-based AES decryption. Supports real-time LSB encoding, multi-format image input, and downloadable encoded output.",
+  tags: ["React", "Steganography", "CryptoJS", "JavaScript", "Vercel"],
+  links: {
+    github: "https://github.com/jkplearner/StegaNest",
+    liveDemo: "https://stega-nest.vercel.app/",
+  },
+  contributors: [
+    {
+      name: "Jaya Krishna Pavan Mummaneni",
+      role: "Fullstack Developer & Crypto Logic",
+      github: "https://github.com/jkplearner",
+    },
+    {
+      name: "Srineela Reddy M",
+      role: "UI Collaboration & Visual Design",
+      github: "https://github.com/srinime1806",
+    }
+  ],
+}
+
   ];
 
   const containerVariants = {
