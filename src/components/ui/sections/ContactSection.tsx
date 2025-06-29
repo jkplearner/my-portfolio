@@ -9,25 +9,37 @@ const ContactSection: React.FC = () => {
   const [sending, setSending] = useState(false);
 
   const handleSendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
+  e.preventDefault();
+  setSending(true);
 
-    if (!formRef.current) return;
+  if (!formRef.current) return;
 
-    emailjs.sendForm(
-      'service_kyqzoh5',
-      'template_79obf6o',
-      formRef.current,
-      'kZWV_LYRYcOoTZ_Ll'
-    ).then(() => {
+  const sendToOwner = emailjs.sendForm(
+    'service_kyqzoh5',
+    'template_79obf6o', // 1️⃣ template that sends message to you
+    formRef.current,
+    'kZWV_LYRYcOoTZ_Ll'
+  );
+
+  const sendAutoReply = emailjs.sendForm(
+    'service_kyqzoh5',
+    'template_2gb5k3y', // 2️⃣ template for auto-reply to visitor
+    formRef.current,
+    'kZWV_LYRYcOoTZ_Ll'
+  );
+
+  Promise.all([sendToOwner, sendAutoReply])
+    .then(() => {
       setSent(true);
       setSending(false);
       formRef.current?.reset();
-    }).catch(() => {
+    })
+    .catch(() => {
       setSent(false);
       setSending(false);
     });
-  };
+};
+
 
   const contactInfo = [
     { icon: <MailIcon size={20} />, text: "jkpm4321@gmail.com", href: "mailto:jkpm4321@gmail.com" },
