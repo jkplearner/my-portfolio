@@ -1,10 +1,47 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { Box, Typography, LinearProgress, LinearProgressProps } from "@mui/material";
 import Hyperspeed from "../../blocks/Backgrounds/Hyperspeed/Hyperspeed"; // local hyperspeed
-import Particles from "../../blocks/Backgrounds/Particles/Particles";   // local particles
+
+// LinearProgressWithLabel component
+const LinearProgressWithLabel = ({
+  value,
+  width,
+}: LinearProgressProps & { value: number; width: number }) => (
+  <Box sx={{ width: `${width}px`, mt: 1 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <LinearProgress 
+        variant="determinate" 
+        value={value} 
+        sx={{ 
+          height: 8, 
+          borderRadius: 5,
+          flex: 1,
+          backgroundColor: '#222',
+          '& .MuiLinearProgress-bar': {
+            background: 'linear-gradient(90deg, #00FFFF, #8800FF)',
+          },
+        }}
+      />
+      <Typography
+        sx={{ 
+          ml: 2,
+          minWidth: 40,
+          fontFamily: "'Poppins', sans-serif", 
+          fontWeight: 700,
+          color: '#FFFFFF',
+          textShadow: '0 0 8px #00FFFF'
+        }}
+      >
+        {`${Math.round(value)}%`}
+      </Typography>
+    </Box>
+  </Box>
+);
 
 const LoadingScreen: React.FC = () => {
   const [countdown, setCountdown] = useState(7);
+  const [textWidth, setTextWidth] = useState(0);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -19,17 +56,21 @@ const LoadingScreen: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Progress from 0 → 1 as countdown goes from 7 → 0
-//   const progress = (7 - countdown) / 7;
-//   const particlesSpeed = 0.1 + progress * 1;              
-//   const particlesCount = Math.floor(200 + progress * 300);
+  const progress = ((7 - countdown) / 7) * 100;
+
+  // measure the width of the "Loading..." text and set progress bar width to match
+  useLayoutEffect(() => {
+    if (textRef.current) {
+      setTextWidth(textRef.current.offsetWidth);
+    }
+  }, []);
 
   return (
     <Box
       className="w-full h-screen overflow-hidden relative"
       sx={{ backgroundColor: "#000" }}
     >
-      {/* Particles background */}
+      {/* Hyperspeed background */}
       <Box
         sx={{
           position: "absolute",
@@ -40,32 +81,10 @@ const LoadingScreen: React.FC = () => {
           zIndex: 0,
         }}
       >
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={500}       // final value
-          speed={1.1} 
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </Box>
-
-      {/* Hyperspeed layer - static speed */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          height: "100%",
-          width: "100%",
-          zIndex: 1,
-        }}
-      >
         <Hyperspeed />
       </Box>
 
-      {/* Dark overlay behind text to block particles */}
+      {/* Dark overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -74,40 +93,37 @@ const LoadingScreen: React.FC = () => {
           height: "100%",
           width: "100%",
           background: "rgba(0, 0, 0, 0.5)",
-          zIndex: 2,
+          zIndex: 1,
         }}
       />
 
-      {/* Centered quote and countdown */}
+      {/* Centered loading text + progress bar */}
       <Box
         className="flex flex-col items-center justify-center w-full h-full text-center p-4"
         sx={{
           position: "absolute",
           top: 0,
           left: 0,
-          zIndex: 3,
+          zIndex: 2,
           color: "#FFFFFF",
         }}
       >
         <Typography
+          ref={textRef}
           variant="h4"
           sx={{
             mb: 2,
-            fontFamily: "Orbitron, sans-serif",
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 700,
             textShadow: "0 0 10px #00FFFF",
+            whiteSpace: "nowrap",
           }}
         >
-          "Exploring the cosmos of creativity..."
+          Loading...
         </Typography>
-        <Typography
-          variant="h6"
-          sx={{
-            fontFamily: "Orbitron, sans-serif",
-            textShadow: "0 0 8px #00FFFF",
-          }}
-        >
-          Please wait... {countdown}
-        </Typography>
+        {textWidth > 0 && (
+          <LinearProgressWithLabel value={progress} width={textWidth} />
+        )}
       </Box>
     </Box>
   );
