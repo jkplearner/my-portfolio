@@ -9,9 +9,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const sectionsRef = useRef<HTMLDivElement>(null);
 
-  // Handle 7-second loading duration
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 7000);
+    const timer = setTimeout(() => setLoading(false), 3500);
     return () => clearTimeout(timer);
   }, []);
 

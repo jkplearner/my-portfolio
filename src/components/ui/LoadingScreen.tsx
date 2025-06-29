@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { Box, Typography, LinearProgress, LinearProgressProps } from "@mui/material";
 import Hyperspeed from "../../blocks/Backgrounds/Hyperspeed/Hyperspeed"; // local hyperspeed
 
-// LinearProgressWithLabel component
 const LinearProgressWithLabel = ({
   value,
   width,
@@ -39,7 +38,7 @@ const LinearProgressWithLabel = ({
 );
 
 const LoadingScreen: React.FC = () => {
-  const [countdown, setCountdown] = useState(7);
+  const [countdown, setCountdown] = useState(3); // changed from 7 → 3 seconds
   const [textWidth, setTextWidth] = useState(0);
   const textRef = useRef<HTMLDivElement>(null);
 
@@ -56,9 +55,8 @@ const LoadingScreen: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const progress = ((7 - countdown) / 7) * 100;
+  const progress = ((3 - countdown) / 3) * 100;
 
-  // measure the width of the "Loading..." text and set progress bar width to match
   useLayoutEffect(() => {
     if (textRef.current) {
       setTextWidth(textRef.current.offsetWidth);
