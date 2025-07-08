@@ -16,93 +16,96 @@ interface Project {
     github?: string;
     liveDemo?: string;
   };
-  contributors?: Contributor[]; // Optional field
+  contributors?: Contributor[];
+  featured?: boolean;
 }
 
 const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
+    {
+      title: "🚀 Cosmic News (Featured)",
+      description:
+        "A full-stack space dashboard that delivers real-time cosmic news, NASA images, upcoming missions, and personalized user channels like stars, galaxies, and nebulae. Includes login-based access, MongoDB integration, Render backend, and Vercel frontend.",
+      tags: ["MERN", "NASA API", "MongoDB Atlas", "Authentication", "Vercel"],
+      links: {
+        github: "https://github.com/jkplearner/CosmicNews",
+        liveDemo: "https://cosmicnews.vercel.app/"
+      },
+      
+      featured: true
+    },
     {
       title: "SmartMatch Resumes",
       description:
         "An intelligent resume screening tool that semantically matches resumes with job descriptions using NLP and deep learning. Features resume ranking, skill extraction, and personalized feedback.",
       tags: ["Python", "NLP", "Streamlit", "Deep Learning", "AI"],
       links: {
-        github: "https://github.com/jkplearner/smartMatchResumes", 
-        liveDemo: "https://smartmatchresumes-live-demo.streamlit.app/", 
-      },
-    },
-    {
-      title: "Nutrimap FoodAnalyzer",
-      description:
-        "A web application that analyzes food items and provides nutritional information. Built using JavaScript and CSS.",
-      tags: ["JavaScript", "CSS", "Nutrition", "Web App"],
-      links: {
-        github: "https://github.com/jkplearner/Nutrimap-FoodAnalyzer", 
-      },
-    },
-    {
-      title: "Chatbot using Gemini",
-      description:
-        "A chatbot application developed using the MERN stack and integrated with the Gemini API. Features include speech-to-text, text-to-speech, image sending, and chat history management.",
-      tags: ["MERN", "Gemini API", "Chatbot", "AI"],
-      links: {
-        github: "https://github.com/jkplearner/Chatbot-using-gemini", 
-      },
-    },
-    {
-      title: "Dairy Management App",
-      description:
-        "A web-based application designed to streamline dairy products operations by managing records of milk products, sales, and inventory with automated data handling and real-time analytics.",
-      tags: ["Salesforce", "Apex", "Lightning Web Components (LWC)", "Salesforce Automation"],
-      links: {
-        github: "https://github.com/jkplearner/Dairy-Management", 
-      },
+        github: "https://github.com/jkplearner/smartMatchResumes",
+        liveDemo: "https://smartmatchresumes-live-demo.streamlit.app/"
+      }
     },
     {
       title: "Quizzy",
       description:
-        "An AI-powered quiz application that dynamically generates quizzes based on user-selected topics and difficulty levels using Gemini API. Features include real-time scoring, MCQ and FIB support, question navigation, and downloadable results.",
+        "An AI-powered quiz application that dynamically generates quizzes using Gemini API. Supports MCQ, FIB, difficulty selection, navigation, and result download.",
       tags: ["React", "AI", "Gemini API", "JavaScript", "Vercel"],
       links: {
-        github: "https://github.com/jkplearner/Quizzy", 
-        liveDemo: "https://quizzy-project.vercel.app/", 
+        github: "https://github.com/jkplearner/Quizzy",
+        liveDemo: "https://quizzy-project.vercel.app/"
       },
       contributors: [
         {
           name: "Jaya Krishna Pavan Mummaneni",
           role: "Backend & AI Logic",
-          github: "https://github.com/jkplearner", 
+          github: "https://github.com/jkplearner"
         },
         {
           name: "Srineela Reddy M",
           role: "Frontend & UI Design",
-          github: "https://github.com/srinime1806", 
+          github: "https://github.com/srinime1806"
+        }
+      ]
+    },
+    {
+      title: "StegaNest",
+      description:
+        "A secure steganography app that lets users hide encrypted messages in images using AES encryption and LSB encoding. Built with the MERN stack and deployed on Vercel.",
+      tags: ["React", "Steganography", "CryptoJS", "JavaScript", "Vercel"],
+      links: {
+        github: "https://github.com/jkplearner/StegaNest",
+        liveDemo: "https://stega-nest.vercel.app/"
+      },
+      contributors: [
+        {
+          name: "Jaya Krishna Pavan Mummaneni",
+          role: "Fullstack Developer & Crypto Logic",
+          github: "https://github.com/jkplearner"
         },
-      ],
+        {
+          name: "Srineela Reddy M",
+          role: "UI Collaboration & Visual Design",
+          github: "https://github.com/srinime1806"
+        }
+      ]
     },
     {
-  title: "StegaNest",
-  description:
-    "A secure image steganography app built with the MERN stack that allows users to hide encrypted messages inside images and retrieve them using password-based AES decryption. Supports real-time LSB encoding, multi-format image input, and downloadable encoded output.",
-  tags: ["React", "Steganography", "CryptoJS", "JavaScript", "Vercel"],
-  links: {
-    github: "https://github.com/jkplearner/StegaNest",
-    liveDemo: "https://stega-nest.vercel.app/",
-  },
-  contributors: [
-    {
-      name: "Jaya Krishna Pavan Mummaneni",
-      role: "Fullstack Developer & Crypto Logic",
-      github: "https://github.com/jkplearner",
+      title: "Nutrimap FoodAnalyzer",
+      description:
+        "A lightweight JavaScript app that analyzes food items and provides detailed nutritional breakdown with intuitive UI.",
+      tags: ["JavaScript", "CSS", "Nutrition", "Web App"],
+      links: {
+        github: "https://github.com/jkplearner/Nutrimap-FoodAnalyzer"
+      }
     },
     {
-      name: "Srineela Reddy M",
-      role: "UI Collaboration & Visual Design",
-      github: "https://github.com/srinime1806",
+      title: "Dairy Management App",
+      description:
+        "A Salesforce-powered dairy records and analytics dashboard that streamlines inventory, milk tracking, and automated data logging using LWC & Apex.",
+      tags: ["Salesforce", "Apex", "Lightning Web Components", "Automation"],
+      links: {
+        github: "https://github.com/jkplearner/Dairy-Management"
+      }
     }
-  ],
-}
-
   ];
 
   const containerVariants = {
@@ -169,15 +172,25 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Contributors Section */}
-                {project.contributors && project.contributors.length > 0 && (
+                {project.contributors && (
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium text-white/60 mb-2">Contributors:</h4>
+                    <h4 className="text-sm font-medium text-white/60 mb-2">
+                      Contributors:
+                    </h4>
                     <ul className="space-y-1">
                       {project.contributors.map((contributor, idx) => (
-                        <li key={idx} className="text-xs text-white/60" style={{ fontWeight: 'bold' }}>
-                          <a href={contributor.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                            {contributor.name} - <span className="italic">{contributor.role}</span>
+                        <li
+                          key={idx}
+                          className="text-xs text-white/60 font-bold"
+                        >
+                          <a
+                            href={contributor.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            {contributor.name} –{" "}
+                            <span className="italic">{contributor.role}</span>
                           </a>
                         </li>
                       ))}
