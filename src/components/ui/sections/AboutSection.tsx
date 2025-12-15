@@ -30,26 +30,24 @@ const AboutSection: React.FC = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="bg-black/30 backdrop-blur-md rounded-xl p-8 md:p-12"
       >
-        <motion.h2 
+        <motion.h2
           variants={itemVariants}
           className="text-3xl md:text-4xl font-bold text-white mb-8"
         >
           About <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">Me</span>
         </motion.h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <motion.div variants={itemVariants}>
             <h3 className="text-xl font-semibold text-white/90 mb-4">Who I Am</h3>
             <p className="text-white/70 leading-relaxed mb-4">
-              I'm a passionate web developer and designer with a love for creating 
-              immersive digital experiences. With a background in both design and 
-              development, I bring a unique perspective to every project.
+              I’m a passionate web developer and designer with a strong interest in building immersive and scalable digital experiences. With hands-on experience in both frontend and backend development, along with Salesforce CRM integration, I bring a well-rounded and practical perspective to every project.
             </p>
             <p className="text-white/70 leading-relaxed">
-              As a fresher, I have completed 4 to 5 projects that allowed me to apply my skills and learn new technologies. These projects helped me gain hands-on experience in building real-world web applications and collaborating effectively in team environments.
+              As a fresher, I have completed 7 projects that allowed me to apply my skills and learn new technologies. These projects helped me gain hands-on experience in building real-world web applications and collaborating effectively in team environments.
             </p>
           </motion.div>
-          
+
           <motion.div variants={itemVariants}>
             <h3 className="text-xl font-semibold text-white/90 mb-4">My Approach</h3>
             <ul className="space-y-3">
@@ -66,7 +64,7 @@ const AboutSection: React.FC = () => {
                 </li>
               ))}
             </ul>
-            
+
             <motion.a
               href="/resume.pdf"
               download="My_Resume.pdf"

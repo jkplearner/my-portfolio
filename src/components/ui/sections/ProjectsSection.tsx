@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GithubIcon } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 interface Contributor {
   name: string;
@@ -14,6 +14,7 @@ interface Project {
   tags: string[];
   links: {
     github?: string;
+    backend?: string;
     liveDemo?: string;
   };
   contributors?: Contributor[];
@@ -23,6 +24,26 @@ interface Project {
 const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
+      title: "🚀 ForceLink CRM (Featured)",
+      description:
+        "A full-stack Customer Relationship Management (CRM) web application designed to manage leads, accounts, opportunities, tasks, and notes through a unified dashboard. Integrates Salesforce CRM with a MERN-based backend and provides real-time analytics along with an AI-powered business assistant for CRM-focused insights.",
+      tags: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Salesforce",
+        "REST API",
+        "CRM",
+        "AI Integration"
+      ],
+      links: {
+        github: "https://github.com/jkplearner/forcelinkCRM-frontend",
+        backend: "https://github.com/jkplearner/salesforce-mern-backend",
+        liveDemo: "https://forcelinkcrm.vercel.app/"
+      }
+    },
+    {
       title: "🚀 Cosmic News (Featured)",
       description:
         "A full-stack space dashboard that delivers real-time cosmic news, NASA images, upcoming missions, and personalized user channels like stars, galaxies, and nebulae. Includes login-based access, MongoDB integration, Render backend, and Vercel frontend.",
@@ -31,7 +52,7 @@ const ProjectsSection: React.FC = () => {
         github: "https://github.com/jkplearner/CosmicNews",
         liveDemo: "https://cosmicnews.vercel.app/"
       },
-      
+
       featured: true
     },
     {
@@ -44,6 +65,7 @@ const ProjectsSection: React.FC = () => {
         liveDemo: "https://smartmatchresumes-live-demo.streamlit.app/"
       }
     },
+
     {
       title: "Quizzy",
       description:
@@ -208,7 +230,7 @@ const ProjectsSection: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <GithubIcon size={14} />
+                      <Github size={14} />
                       <span>Code</span>
                     </motion.a>
                   )}
