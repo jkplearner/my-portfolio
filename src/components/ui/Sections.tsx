@@ -3,6 +3,7 @@ import HomeSection from './sections/HomeSection';
 import AboutSection from './sections/AboutSection';
 import SkillsSection from './sections/SkillsSection';
 import ProjectsSection from './sections/ProjectsSection';
+import CertificateSection from './sections/CertificateSection';
 import ContactSection from './sections/ContactSection';
 
 const Sections: React.FC = () => {
@@ -12,24 +13,29 @@ const Sections: React.FC = () => {
       <section id="home" className="h-screen flex items-center">
         <HomeSection />
       </section>
-      
+
       {/* About Section */}
       <section id="about" className="min-h-screen flex items-center">
         <AboutSection />
       </section>
-      
+
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen flex items-center" style={{marginBottom:50,}}>
+      <section id="skills" className="min-h-screen flex items-center" style={{ marginBottom: 50, }}>
         <SkillsSection />
       </section>
-      
+
       {/* Projects Section */}
       <section id="projects" className="min-h-screen flex items-center">
         <ProjectsSection />
       </section>
-      
+
+      {/* Certifications Section */}
+      <section id="certifications" className="min-h-screen flex items-center" style={{ marginBottom: 50, marginTop: 50 }}>
+        <CertificateSection />
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center" style={{marginTop:50,}}>
+      <section id="contact" className="min-h-screen flex items-center" style={{ marginTop: 50, }}>
         <ContactSection />
       </section>
     </div>
