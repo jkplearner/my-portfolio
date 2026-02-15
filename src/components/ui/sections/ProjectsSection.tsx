@@ -16,6 +16,7 @@ interface Project {
     github?: string;
     backend?: string;
     liveDemo?: string;
+    mobileApk?: string;
   };
   contributors?: Contributor[];
   featured?: boolean;
@@ -26,21 +27,24 @@ const ProjectsSection: React.FC = () => {
     {
       title: "🚀 ForceLink CRM (Featured)",
       description:
-        "A full-stack Customer Relationship Management (CRM) web application designed to manage leads, accounts, opportunities, tasks, and notes through a unified dashboard. Integrates Salesforce CRM with a MERN-based backend and provides real-time analytics along with an AI-powered business assistant for CRM-focused insights.",
+        "A full-stack CRM platform that synchronizes Salesforce data with an internal MERN backend to manage leads, accounts, opportunities, tasks, and notes from a unified dashboard. Includes analytics and a context-restricted AI assistant that analyzes CRM records and suggests actions. Also provides a React Native mobile companion app for field usage, allowing users to view, update, and interact with CRM data on the go.",
       tags: [
         "React",
+        "React Native",
         "Node.js",
         "Express",
         "MongoDB",
         "Salesforce",
         "REST API",
         "CRM",
-        "AI Integration"
+        "AI Integration",
+        "Mobile App"
       ],
       links: {
         github: "https://github.com/jkplearner/forcelinkCRM-frontend",
         backend: "https://github.com/jkplearner/salesforce-mern-backend",
-        liveDemo: "https://forcelinkcrm.vercel.app/"
+        liveDemo: "https://forcelinkcrm.vercel.app/",
+        mobileApk: "https://drive.google.com/file/d/12tWn8Ej3BRK5ZCBX11fY4XtW48_HeAlq/view?usp=sharing"
       }
     },
     {
@@ -220,11 +224,11 @@ const ProjectsSection: React.FC = () => {
                   </div>
                 )}
 
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   {project.links.github && (
                     <motion.a
                       href={project.links.github}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-full text-white/80 text-sm transition-colors"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-full text-white/80 text-sm whitespace-nowrap transition-colors"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       target="_blank"
@@ -238,13 +242,26 @@ const ProjectsSection: React.FC = () => {
                   {project.links.liveDemo && (
                     <motion.a
                       href={project.links.liveDemo}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-full text-white/80 text-sm transition-colors"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-full text-white/80 text-sm whitespace-nowrap transition-colors"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span>Live Demo</span>
+                    </motion.a>
+                  )}
+
+                  {project.links.mobileApk && (
+                    <motion.a
+                      href={project.links.mobileApk}
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-300 text-sm whitespace-nowrap transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Mobile APK</span>
                     </motion.a>
                   )}
                 </div>

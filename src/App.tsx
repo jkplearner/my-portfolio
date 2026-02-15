@@ -1,18 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import Navbar from './components/ui/Navbar';
 import Sections from './components/ui/Sections';
-import LoadingScreen from './components/ui/LoadingScreen';
 import Space from './components/3d/Space'; // your updated Space component rendering Particles
+
+const ChatAgent = lazy(() => import('./components/ui/chat/ChatAgent'));
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [loading, setLoading] = useState(true);
   const sectionsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3500);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Update active section on scroll
   useEffect(() => {
@@ -41,9 +36,6 @@ function App() {
     }
   };
 
-  // Show loading screen during initial 7 seconds
-  if (loading) return <LoadingScreen />;
-
   return (
     <div className="relative w-full h-screen">
       {/* Fullscreen Particles background */}
@@ -58,8 +50,14 @@ function App() {
           <Sections />
         </div>
       </div>
+
+      {/* AI Chat Agent — lazy loaded */}
+      <Suspense fallback={null}>
+        <ChatAgent />
+      </Suspense>
     </div>
   );
 }
 
 export default App;
+
