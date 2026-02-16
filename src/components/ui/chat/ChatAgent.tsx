@@ -90,7 +90,7 @@ const ChatAgent: React.FC = () => {
         setIsTyping(true);
 
         try {
-            const apiKey = (typeof process !== 'undefined' && process.env?.AI_API) || '';
+            const apiKey = import.meta.env.VITE_AI_API || '';
             const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
                 method: 'POST',
                 headers: {

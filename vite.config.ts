@@ -11,7 +11,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  define: {
-    'process.env.AI_API': JSON.stringify(process.env.AI_API),
-  },
+
 });
