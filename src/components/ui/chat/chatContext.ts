@@ -37,6 +37,7 @@ PROJECTS:
 7. Dairy Management App — A Salesforce-powered dairy records and analytics dashboard using LWC & Apex. Tech: Salesforce, Apex, Lightning Web Components, Automation.
 
 CERTIFICATIONS:
+- Salesforce Certified Platform Developer I (March 9th, 2026) — Validated expertise in developing custom business logic and interfaces using the programmatic capabilities of the Lightning Platform.
 - Salesforce Certified Agentforce Specialist (December 5th, 2025) — Validated expertise in building and deploying autonomous agents with Agentforce.
 
 BEHAVIOR RULES:

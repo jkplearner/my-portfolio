@@ -5,6 +5,13 @@ import { FileText, ExternalLink } from 'lucide-react';
 const CertificateSection: React.FC = () => {
     const certificates = [
         {
+            title: "Salesforce Certified Platform Developer I",
+            issuer: "Salesforce",
+            date: "March 9th, 2026",
+            description: "Validated expertise in developing custom business logic and interfaces using the programmatic capabilities of the Lightning Platform.",
+            pdfUrl: "/Cert7520079_PlatformDeveloper_20260309.pdf"
+        },
+        {
             title: "Salesforce Certified Agentforce Specialist",
             issuer: "Salesforce",
             date: "December 5th, 2025",
