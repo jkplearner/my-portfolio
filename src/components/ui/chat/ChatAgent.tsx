@@ -98,7 +98,7 @@ const ChatAgent: React.FC = () => {
                     'Authorization': `Bearer ${apiKey}`,
                 },
                 body: JSON.stringify({
-                    model: 'llama-3.3-70b-versatile',
+                    model: 'qwen/qwen3.8-27b',
                     messages: [
                         { role: 'system', content: SYSTEM_PROMPT },
                         ...updatedMessages.map(m => ({ role: m.role, content: m.content })),
@@ -109,7 +109,8 @@ const ChatAgent: React.FC = () => {
             });
 
             if (!res.ok) {
-                throw new Error(`API error: ${res.status}`);
+                const errorData = await res.json().catch(() => null);
+                throw new Error(`API error ${res.status}: ${errorData?.error?.message || res.statusText}`);
             }
 
             const data = await res.json();
@@ -124,7 +125,8 @@ const ChatAgent: React.FC = () => {
             } else {
                 setMessages(prev => [...prev, { role: 'assistant', content: reply }]);
             }
-        } catch {
+        } catch (err) {
+            console.error('ChatAgent API error:', err);
             setMessages(prev => [
                 ...prev,
                 { role: 'assistant', content: 'I\'m having trouble connecting right now. Please try again in a moment.' },
